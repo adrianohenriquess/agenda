@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.inovacenter.agendamento.model.enums.TipoLogradouro;
+
 @Entity
 public class Estabelecimento implements Serializable {
 	private static final long serialVersionUID = -2655846278803819092L;
@@ -23,8 +25,10 @@ public class Estabelecimento implements Serializable {
 	private String nomeEstabelecimento;
 	@NotEmpty(message = "Telefone não pode ser nulo")
 	private String telefone;
+	private TipoLogradouro tipoLogradouro;
 	@NotEmpty(message = "Endereço não pode ser nulo")
 	private String endereco;
+	private String numero;
 	private String horarioFuncionamento;
 	private String observacao;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estabelecimento")
@@ -88,6 +92,22 @@ public class Estabelecimento implements Serializable {
 
 	public void setProfissionais(List<Profissional> profissionais) {
 		this.profissionais = profissionais;
+	}
+
+	public TipoLogradouro getTipoLogradouro() {
+		return tipoLogradouro;
+	}
+
+	public void setTipoLogradouro(TipoLogradouro tipoLogradouro) {
+		this.tipoLogradouro = tipoLogradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	
 }

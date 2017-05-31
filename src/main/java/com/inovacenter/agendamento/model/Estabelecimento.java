@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.inovacenter.agendamento.model.enums.TipoLogradouro;
+import com.inovacenter.agendamento.model.enums.UF;
 
 @Entity
 public class Estabelecimento implements Serializable {
@@ -26,6 +27,7 @@ public class Estabelecimento implements Serializable {
 	@NotEmpty(message = "Telefone não pode ser nulo")
 	private String telefone;
 	private TipoLogradouro tipoLogradouro;
+	private UF uf;
 	@NotEmpty(message = "Endereço não pode ser nulo")
 	private String endereco;
 	private String numero;
@@ -108,6 +110,14 @@ public class Estabelecimento implements Serializable {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public UF getUf() {
+		return uf;
+	}
+
+	public void setUf(UF uf) {
+		this.uf = uf;
 	}
 	
 }

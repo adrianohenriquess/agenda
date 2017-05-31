@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.inovacenter.agendamento.model.enums.TipoLogradouro;
+import com.inovacenter.agendamento.model.enums.UF;
 
 
 public class EstabelecimentoTest {
@@ -20,11 +21,15 @@ public class EstabelecimentoTest {
 		estabelecimento.setNomeEstabelecimento("Hair Style");
 		estabelecimento.setNumero("121");
 		estabelecimento.setTipoLogradouro(TipoLogradouro.RUA);
+		estabelecimento.setUf(UF.SP);
 		estabelecimentos.add(estabelecimento);
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
-	public void testInserirEstabelecimentoComEnderecoInvalido() {
+	public void testSelecionarEstabelecimentoPorEndereco() {
 		
 	}
 }

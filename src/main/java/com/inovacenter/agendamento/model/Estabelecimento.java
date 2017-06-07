@@ -11,28 +11,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import com.inovacenter.agendamento.model.enums.TipoLogradouro;
-import com.inovacenter.agendamento.model.enums.UF;
-
 @Entity
 public class Estabelecimento implements Serializable {
 	private static final long serialVersionUID = -2655846278803819092L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotEmpty(message = "Nome do estabelecimento não pode ser nulo")
 	private String nomeEstabelecimento;
-	@NotEmpty(message = "Telefone não pode ser nulo")
 	private String telefone;
-	private TipoLogradouro tipoLogradouro;
-	private UF uf;
-	@NotEmpty(message = "Endereço não pode ser nulo")
-	private String endereco;
-	private String numero;
 	private String horarioFuncionamento;
 	private String observacao;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Endereco> enderecos;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estabelecimento")
 	private List<Profissional> profissionais;
 	
@@ -54,14 +44,6 @@ public class Estabelecimento implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getHorarioFuncionamento() {
@@ -96,28 +78,21 @@ public class Estabelecimento implements Serializable {
 		this.profissionais = profissionais;
 	}
 
-	public TipoLogradouro getTipoLogradouro() {
-		return tipoLogradouro;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setTipoLogradouro(TipoLogradouro tipoLogradouro) {
-		this.tipoLogradouro = tipoLogradouro;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public UF getUf() {
-		return uf;
-	}
-
-	public void setUf(UF uf) {
-		this.uf = uf;
-	}
+	@Override
+	public String toString() {
+		return "Estabelecimento [id=" + id + ", nomeEstabelecimento=" + nomeEstabelecimento + ", telefone=" + telefone
+				+ ", horarioFuncionamento=" + horarioFuncionamento + ", observacao=" + observacao + ", enderecos="
+				+ enderecos + ", profissionais=" + profissionais + "]";
+	}	
+	
+	
 	
 }

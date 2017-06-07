@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario implements Serializable {
@@ -18,8 +19,8 @@ public class Usuario implements Serializable {
 	private String password;
 	private String nome;
 	private String celular;
-	@OneToOne
-	private Estabelecimento estabelecimento;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Endereco endereco;
 	@ManyToMany
 	@JoinTable(
 			name = "users_roles", 
@@ -62,19 +63,19 @@ public class Usuario implements Serializable {
 		this.celular = celular;
 	}
 
-	public Estabelecimento getEstabelecimento() {
-		return estabelecimento;
-	}
-
-	public void setEstabelecimento(Estabelecimento estabelecimento) {
-		this.estabelecimento = estabelecimento;
-	}
-
 	public List<Role> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }

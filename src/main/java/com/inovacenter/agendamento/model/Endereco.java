@@ -8,9 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.inovacenter.agendamento.model.enums.TipoLogradouro;
-import com.inovacenter.agendamento.model.enums.UF;
-
 @Entity
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = -5513299754268664951L;

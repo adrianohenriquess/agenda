@@ -1,4 +1,4 @@
-package com.inovacenter.agendamento.model.enums;
+package com.inovacenter.agendamento.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class TipoLogradouro {
+public class UF {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	
-	public TipoLogradouro() {}
+	public UF() {}
 	
-	public TipoLogradouro(Long id, String descricao) {
-		this.setId(id);
-		this.setDescricao(descricao);
+	public UF(Long id, String descricao) {
+		this.id = id;
+		this.descricao = descricao;
 	}
 
 	public Long getId() {
@@ -34,5 +34,6 @@ public class TipoLogradouro {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
 	
 }
